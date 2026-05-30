@@ -279,6 +279,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // 10. Mobile Menu Dropdown Control
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const consoleSidebar = document.querySelector(".console-sidebar");
+  
+  if (mobileMenuBtn && consoleSidebar) {
+    const icon = mobileMenuBtn.querySelector("i");
+    
+    mobileMenuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = consoleSidebar.classList.contains("menu-open");
+      if (isOpen) {
+        consoleSidebar.classList.remove("menu-open");
+        if (icon) icon.className = "fas fa-bars";
+      } else {
+        consoleSidebar.classList.add("menu-open");
+        if (icon) icon.className = "fas fa-times";
+      }
+    });
+
+    // Close menu when clicking a link
+    const sidebarLinks = consoleSidebar.querySelectorAll(".nav-links a");
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        consoleSidebar.classList.remove("menu-open");
+        if (icon) icon.className = "fas fa-bars";
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!consoleSidebar.contains(e.target) && consoleSidebar.classList.contains("menu-open")) {
+        consoleSidebar.classList.remove("menu-open");
+        if (icon) icon.className = "fas fa-bars";
+      }
+    });
+  }
+
   // 9. Initial Load Rendering
   renderPublications();
   renderBlogs();
