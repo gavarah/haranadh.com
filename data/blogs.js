@@ -4,6 +4,356 @@
  */
 const blogsData = [
   {
+    id: "blog-data-governance",
+    title: "Data Governance in the AI Era: Ownership, Semantics, and Trust",
+    excerpt: "Why model-level policies and prompt guardrails are secondary to the data foundation beneath them. An enterprise framework for data ownership, semantics, ontology-driven quality, and lineage-aware authorization.",
+    content: `
+      <p><em>Disclaimer: The ideas, arguments, and analysis in this article are my own, based on my observations and experience. I used AI tools to help refine the writing and structure (editing support), but the underlying thoughts and viewpoints are original.</em></p>
+      
+      <p>Everyone is talking about AI governance that includes model policies, prompt guardrails, hallucination monitoring, and agent controls. All important.</p>
+      
+      <p>But from what I’ve observed across multiple enterprise environments, the place where things break first is usually not the model. It’s the foundation underneath it.</p>
+      
+      <p>When AI is treated as a system rather than a module, most failures are not model failures. They are data failures.</p>
+      
+      <blockquote style="border-left: 3px solid var(--accent-indigo); padding-left: 20px; font-style: italic; font-weight: 500; color: var(--text-primary); margin: 20px 0;">
+        "It is the data that failed the system, not the AI."
+      </blockquote>
+      
+      <h4>1. The Real Prerequisite: Meaning That Scales</h4>
+      <p>AI doesn’t just "use data". It interprets it. And interpretation depends on meaning.</p>
+      
+      <p>In the analytics world, organizations could survive with imperfect definitions because humans were the "semantic glue". Someone would look at a dashboard and say, <em>"this seems off"</em>, reconcile it manually, and move on. AI changes that. AI systems read across sources, versions, and contexts and they operate continuously. If meaning is inconsistent, AI doesn’t pause and ask questions. It confidently scales the inconsistency.</p>
+      
+      <p>That’s why, in the AI era, data governance starts with a harder truth: <strong>you cannot govern data without governing meaning.</strong></p>
+      
+      <h4>2. Semantics, Ontology, and Enterprise Vocabulary Are Not "Nice to Have"</h4>
+      <p>This is the part many governance programs underweight. We often treat semantics as documentation and definitions in a wiki, a glossary in a catalog, maybe a small ontology group that publishes "standard terms".</p>
+      
+      <p>But semantics is not documentation. <strong>Semantics is the contract of the business.</strong></p>
+      
+      <p>It defines what "customer" means. What "active" means. What "risk" means. What "exposure" means. What counts as "default". What is "internal" vs "external". What is "draft" vs "certified". If those definitions drift across teams, the organization doesn’t just get inconsistent reports. It gets inconsistent decisions. And AI just accelerates that.</p>
+      
+      <h4>3. What I’ve Personally Observed: The Vocabulary Exists, Adoption Doesn’t</h4>
+      <p>I’ve seen centralized vocabulary, ontology, and semantics teams exist and do genuinely good work in a few industries like clinical research where I worked closely. When it’s done well, it becomes the backbone for consistency across systems and reporting.</p>
+      
+      <p>But the recurring problem I see isn’t creating the enterprise vocabulary. It’s what happens next:</p>
+      
+      <p>The knowledge stays with a small group. The vocabulary is not distributed well across the enterprise. The organization doesn’t educate employees to use it daily. Product teams build local definitions. Data teams map fields differently. Reporting teams create their own interpretations.</p>
+      
+      <p>So the enterprise ends up with a "central truth" that is not actually used as truth. In the AI era, this gap becomes visible immediately because AI systems don’t consume your intention, they consume what is accessible.</p>
+      
+      <blockquote style="border-left: 3px solid var(--accent-indigo); padding-left: 20px; font-style: italic; font-weight: 500; color: var(--text-primary); margin: 20px 0;">
+        "If the enterprise vocabulary is not embedded into the day-to-day operating model, AI will scale local interpretations."
+      </blockquote>
+      
+      <h4>4. Restructuring Semantics and Ontology Teams for the AI Era</h4>
+      <p>This is why I think the semantics/ontology function needs restructuring, not necessarily in the org chart, but in mandate. They should not only be responsible for creating an enterprise vocabulary. They should also be responsible for enterprise adoption.</p>
+      
+      <p>That means the team’s success metrics must include:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>Running regular studies with domain SMEs to verify what metrics mean in practice.</li>
+        <li>Conducting training and enablement across engineering, analytics, operations, and product.</li>
+        <li>Creating semantic onboarding paths for new employees.</li>
+        <li>Building a "semantic review" muscle into delivery workflows.</li>
+        <li>Versioning definitions and communicating changes like product releases.</li>
+      </ul>
+      
+      <p>In other words: <strong>treat semantics like a product, not a document.</strong> Because meaning is not a one-time definition exercise. Meaning changes as the business changes.</p>
+      
+      <h4>5. How Semantics Connects to the Rest of Data Governance</h4>
+      <p>Once you accept that meaning is central, the rest of governance becomes much clearer:</p>
+      
+      <h5>A. Ownership Becomes Enforceable (Producer + Data Product Owner)</h5>
+      <p>Ownership isn’t just "who owns the table". You need clarity on two roles:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li><strong>The Producer:</strong> Responsible for applying the enterprise vocabulary at the point of creation and tagging/classifying the data correctly.</li>
+        <li><strong>The Data Product Owner:</strong> Responsible for maintaining certified versions, quality gates, lineage, and access rules for the curated dataset others consume.</li>
+      </ul>
+      <p>This is where semantics and ontology must integrate tightly with domain SMEs and data product owners because producers can’t classify and label correctly if meaning isn’t clear.</p>
+      
+      <h5>B. Access Rules Must Sit Near the Data and Near AI Entry Points</h5>
+      <p>Access is not only "who can query this dataset". It’s also "for what purpose" and "under what semantic and version constraints". Access controls need to be enforced close to the data at generation and storage, but also close to the AI entry points (RAG retrieval, agent tools, model training datasets). Otherwise, AI will process whatever it can see.</p>
+      
+      <h5>C. Quality Must Be Measured Against Meaning (Ontology-Driven Quality)</h5>
+      <p>Quality cannot be only null checks and row counts. Quality must answer: <em>"does this dataset match what we claim it means?"</em> That requires semantic constraints like valid ranges, allowed values, entity relationships, classification consistency, and cross-field rules.</p>
+      
+      <p>Ontology and semantics make quality measurable. Without them, quality becomes subjective and political. This is why strong integration between semantics/ontology teams, domain SMEs, and data teams is not optional. It’s the only way to make quality gates real.</p>
+      
+      <h5>D. Lineage and Versioning Are Not Just Traceability, They Are Boundary Control</h5>
+      <p>Lineage should show how data evolves and what transformed it. But in practice, it also protects the enterprise from mixing versions that should never mix: <em>Which versions are valid? Which are certified? Which are internal only? Which are external? Which are draft? Which are experimental?</em></p>
+      
+      <p>This matters because without strong versioning, confidential slices (like ongoing research results) can sit alongside approved datasets. AI will process the entire dataset if it can access it, and that is how leaks happen. Not through hacking. Through weak boundaries. And those leaks become financial risk quickly: competitive leakage, contractual breaches, regulatory penalties, and trust loss.</p>
+      
+      <h4>6. Regulatory Reporting: The Clearest Example of Why Semantics Matters</h4>
+      <p>Regulatory reporting already depends on precise definitions. Without an enterprise vocabulary, reporting suffers: inconsistent numbers across systems, manual reconciliations, slow audits, and constant debate over "which definition is correct".</p>
+      
+      <p>With AI, this doesn’t improve automatically. AI can accelerate reporting, but it can also scale semantic mistakes faster. So both worlds suffer:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li><strong>Without AI:</strong> Slow, manual validation workflows.</li>
+        <li><strong>With AI:</strong> Fast output, but a significantly bigger blast radius for errors.</li>
+      </ul>
+      
+      <p>The practical way to reduce this is to make semantics/ontology teams part of the assurance loop:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>Regulatory report definitions must map directly to the enterprise vocabulary.</li>
+        <li>Reports should be reviewed (or sampled) by semantics/ontology teams, especially when definitions or versions change.</li>
+        <li>AI-generated summaries or mappings must be strictly constrained to certified semantic versions.</li>
+      </ul>
+      <p>This is how reporting becomes not only fast, but defensible.</p>
+      
+      <h4>7. Building Models When Builders Can’t See the Raw Data</h4>
+      <p>Another reality in regulated enterprises is that people building data pipelines and AI models often should not have visibility rights to raw data. That’s correct security posture. So the question becomes: how do you build models without leaking data?</p>
+      
+      <p>The answer is moderated environments:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>Curated and masked training views.</li>
+        <li>Secure compute workspaces with restricted export/egress.</li>
+        <li>Versioned training datasets with explicit lineage.</li>
+        <li>Controlled model artifact release gates.</li>
+        <li>Rigorous auditing of retrieval and training inputs.</li>
+      </ul>
+      <p>This lets AI teams move fast while keeping confidentiality boundaries completely intact.</p>
+      
+      <h4>8. A Product Gap: Lineage-Aware Authorization</h4>
+      <p>Traditional authentication and authorization systems are not built for AI-era governance. They decide access based on identity attributes, roles, and sometimes data classification. But they rarely use lineage and version as first-class inputs.</p>
+      
+      <p>In the AI era, we need policies like:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>Allow access only if lineage includes certified sources.</li>
+        <li>Allow only the external-certified version, not internal drafts.</li>
+        <li>Block retrieval if lineage traces to restricted research or investigations.</li>
+        <li>Allow agents to query only through approved, masked views.</li>
+      </ul>
+      <p>Today, these systems are still weakly coupled: identity sits in one place, lineage in another, governance catalogs elsewhere, and AI retrieval gateways somewhere else. That gap opens up a real opportunity for **lineage-aware authorization** as a product layer.</p>
+      
+      <h4>Policy Before Platform</h4>
+      <p>One repeated failure pattern is jumping straight into tools and pilots. Governance and AI implementations should start with policy alignment first:</p>
+      <ol style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
+        <li>What is a data product?</li>
+        <li>Who produces the data and who owns the data product?</li>
+        <li>What are semantic standards and enterprise vocabulary ownership rules?</li>
+        <li>How do we classify data at creation?</li>
+        <li>What are versioning rules (internal vs external, draft vs certified)?</li>
+        <li>What is allowed for AI retrieval and agents?</li>
+      </ol>
+      
+      <p>Once these are agreed upon, the implementation becomes consistent. Without this, teams implement governance differently and AI scales inconsistency again.</p>
+      
+      <h4>Closing Thoughts</h4>
+      <p>AI governance is important, but it cannot stand alone. If AI is a system, then trust depends on governing what feeds that system: ownership that is real, semantics that scales, quality measured against meaning, access enforced near data and AI entry points, and lineage/versioning that prevents silent leaks.</p>
+      <p>This is also not the end of the story. In fact, it’s where the interesting questions begin: how enterprises operationalize semantics at scale, how lineage-aware access control should work, how moderated AI environments become standard, and how governance shifts from committees to pipelines.</p>
+    `,
+    date: "Mar 5, 2026",
+    readTime: "7 min read",
+    tags: ["Data Governance", "Enterprise AI", "Semantics"],
+    featured: true
+  },
+  {
+    id: "blog-mis-to-oi",
+    title: "From MIS to Operational Intelligence in the AI Era: Run the Business Without Reporting Meetings",
+    excerpt: "Why standups and status meetings are a workaround for missing operational visibility. Upgrading MIS from periodic reporting to point-in-time operational truth with AI-enabled tracing.",
+    content: `
+      <p><em>Disclaimer: The ideas, arguments, and analysis in this article are my own, based on my observations and experience. I used AI tools to help refine the writing and structure (editing support), but the underlying thoughts and viewpoints are original.</em></p>
+      
+      <p>I still remember studying Management Information Systems (MIS) during graduation and being genuinely fascinated by it.</p>
+      
+      <p>In the early days of enterprise software, this was one of the big drivers because of which companies didn’t just adopt systems to automate tasks, but to make operations visible to management that includes reporting, control, forecasting, decision support.</p>
+      
+      <p>That idea stuck with me. It’s also what pulled me into data processing, then data science and machine learning, and later into enterprise architecture and now into enterprise AI architecture.</p>
+      
+      <p>Because the core question never changed:</p>
+      
+      <blockquote style="border-left: 3px solid var(--accent-indigo); padding-left: 20px; font-style: italic; font-weight: 500; color: var(--text-primary); margin: 20px 0;">
+        "How do we turn operational reality into decision-ready intelligence?"
+      </blockquote>
+      
+      <p>Today, two shifts are happening in parallel:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li><strong>Service thinking &rarr; data product thinking</strong> (how value is built and owned)</li>
+        <li><strong>MIS &rarr; Operational Intelligence</strong> (how value is managed in real time)</li>
+      </ul>
+      
+      <p>And AI is accelerating both and compressing cycle time so much that running the business through standups and status meetings is no longer sustainable.</p>
+      
+      <h4>1. Service Thinking to Data Product Thinking (And Why It Matters)</h4>
+      <p>In a service model, value is often delivered as effort:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>Deliver the work</li>
+        <li>Close the project</li>
+        <li>Move on</li>
+      </ul>
+      
+      <p>In a data product model, value is managed as an asset:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>Defined owners</li>
+        <li>Clear contracts</li>
+        <li>Measurable quality</li>
+        <li>Continuous improvement</li>
+        <li>Reusable outcomes</li>
+      </ul>
+      
+      <p>That shift has a consequence many organizations underestimate: <strong>you can’t run data products through reporting meetings.</strong></p>
+      
+      <p>If data is a product, then quality, reliability, and progress must be visible continuously but not explained periodically. This is where the MIS &rarr; Operational Intelligence shift becomes the management-layer equivalent of service &rarr; data product thinking.</p>
+      
+      <p><em>(More on service thinking to data product thinking can be found in my previous articles.)</em></p>
+      
+      <h4>2. Meetings Became the Management Layer</h4>
+      <p>Let’s be honest about why standups and status meetings exist. They are not \"collaboration rituals\". They are a workaround for one missing capability: <strong>management cannot see operational reality on demand.</strong></p>
+      
+      <p>So organizations create a human reporting layer:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>People interpret the status</li>
+        <li>People explain blockers</li>
+        <li>People translate work into progress</li>
+        <li>Decisions wait until the next sync</li>
+      </ul>
+      
+      <p>This was manageable when cycles were slower. But now operations move too fast and they will only get faster.</p>
+      
+      <h4>3. Why Operations Are Faster Now (And Why AI Makes It Even Faster)</h4>
+      <p>Technology has been compressing cycle time for years:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>Software releases became more frequent</li>
+        <li>Processes became API-driven and interconnected</li>
+        <li>Customer expectations moved closer to real-time</li>
+        <li>Feedback loops shortened across industries</li>
+      </ul>
+      
+      <p>AI accelerates this further not by \"changing strategy\", but by compressing execution:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>Faster drafting, coding, testing, documentation</li>
+        <li>Faster analysis and triage</li>
+        <li>Faster experimentation and iteration</li>
+        <li>Faster automation of routine coordination</li>
+      </ul>
+      
+      <p>So the gap between \"what changed\" and \"what management knows\" becomes a real risk. When reality updates continuously, the management system must update continuously too.</p>
+      
+      <h4>4. The Real Cost is Decision Latency</h4>
+      <p>People often complain about the time spent in meetings. But the bigger cost is decision latency. By the time status is reported:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>The situation has already changed</li>
+        <li>The root cause is buried in noise</li>
+        <li>Customer impact may already be visible</li>
+      </ul>
+      
+      <p>Leaders are reacting, not steering, and the most dangerous part is that teams can give \"green\" updates and still be heading toward a red outcome. Because meetings report narratives. Operational intelligence reports reality.</p>
+      
+      <h4>5. Operational Intelligence is MIS Rebuilt for Point-in-Time Truth</h4>
+      <p>This is the simplest definition:</p>
+      <blockquote style="border-left: 3px solid var(--accent-indigo); padding-left: 20px; font-style: italic; font-weight: 500; color: var(--text-primary); margin: 20px 0;">
+        \"Operational Intelligence is MIS upgraded from periodic reporting to point-in-time operational truth.\"
+      </blockquote>
+      
+      <p>MIS (as commonly implemented) answers: <em>What happened?</em></p>
+      <p>Operational Intelligence answers: <em>What’s happening now? What’s blocked and what needs attention?</em></p>
+      
+      <p>It’s not \"more dashboards\". It’s a shift in operating model:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>From reporting to visibility</li>
+        <li>From meetings to signals</li>
+        <li>From narrative updates to evidence</li>
+        <li>From \"who knows?\" to \"what does the system show right now?\"</li>
+      </ul>
+      
+      <p>In short: <strong>Standups are often a workaround for missing operational intelligence.</strong></p>
+      
+      <h4>6. What Point-in-Time Visibility Actually Means</h4>
+      <p>If the goal is fewer meetings and faster decisions, the system must answer management questions instantly. At any point in time, leaders should be able to see:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>What moved since the last check</li>
+        <li>What is in progress (with evidence, not confidence)</li>
+        <li>What is blocked and why</li>
+        <li>What passed quality gates and what failed</li>
+        <li>Where risk is building (time-in-stage, SLA breaches, quality drift)</li>
+        <li>Who owns the next action</li>
+      </ul>
+      
+      <p>This is not micromanagement.</p>
+      
+      <div style="padding: 12px 16px; background: rgba(79, 70, 229, 0.03); border-left: 3px solid var(--accent-indigo); border-radius: 4px; margin-bottom: 20px; font-size: 0.94rem; color: var(--text-primary);">
+        <i class="fas fa-exclamation-triangle" style="margin-right: 6px; color: var(--accent-indigo);"></i> <strong>Note:</strong> This kind of thinking without proper guardrails will result in poorly designed systems which encourage micromanagement. The product design should take care of coming up with a better system design to avoid micromanagement as a side effect. More on this in my next article.
+      </div>
+      
+      <p>It’s removing the need to chase updates. When the system shows reality, meetings stop being \"status exchanges\" and become what they should be: <strong>decision forums.</strong></p>
+      
+      <h4>7. Where AI Fits (Without the Hype)</h4>
+      <p>AI is not the definition of operational intelligence. Operational intelligence is the operating model shift. AI is the accelerator because modern operations produce too much noise for humans to summarize continuously.</p>
+      
+      <p>AI helps convert operational signals into decision-grade clarity:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>Summarizing current state across systems</li>
+        <li>Highlighting what changed since yesterday</li>
+        <li>Detecting anomalies and early risk signals</li>
+        <li>Explaining blockers in plain language</li>
+        <li>Recommending next actions tied to owners</li>
+        <li>Linking back to evidence so it stays auditable</li>
+      </ul>
+      
+      <p>So the bridge becomes clean:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li><strong>MIS</strong> = management reporting</li>
+        <li><strong>Operational Intelligence</strong> = management visibility</li>
+        <li><strong>AI</strong> = interpretation layer that compresses time-to-clarity</li>
+      </ul>
+      
+      <h4>8. Why This is Domain Independent</h4>
+      <p>I’m using MIS framing intentionally because operational intelligence is not a \"tech thing\". Every domain has the same structure:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li><strong>Work units</strong> (orders, claims, cases, patients, shipments, tickets)</li>
+        <li><strong>Flow stages</strong> (created &rarr; in progress &rarr; validated &rarr; delivered)</li>
+        <li><strong>Quality gates</strong> (approvals, checks, audits, validations)</li>
+        <li><strong>Exceptions</strong> (delays, rework, escalations)</li>
+        <li><strong>Ownership</strong> (who must act when exceptions happen)</li>
+      </ul>
+      
+      <p>Different industries use different words. But they have the same management need: <strong>see reality, decide fast, act with accountability.</strong></p>
+      
+      <h4>9. What Changes Once You Operate This Way</h4>
+      <p><strong>1) Meetings shrink naturally:</strong> Because status is always available from the system. Standups move from \"updates\" to: what needs a decision, what needs escalation, what gate is failing, and what risk is growing.</p>
+      <p><strong>2) Ownership becomes real:</strong> When blockers, time-in-stage, and next actions are visible, accountability becomes explicit. Escalation becomes structured, not emotional.</p>
+      <p><strong>3) Governance becomes executable:</strong> Quality and policy checks move into the flow. This matters even more as AI systems enter production because you don’t govern AI with PDFs. You govern it with controls that show up in operational reality.</p>
+      
+      <h4>10. Humans Returning to High-Leverage Work</h4>
+      <p>This model of MIS capturing data, AI creating operational intelligence, and humans focusing on creative thinking, decision-making, ownership, and governance does not replace people. It repositions them.</p>
+      
+      <p>MIS gathers operational signals. AI compresses those signals into clarity. But judgment, accountability, and strategic direction remain human responsibilities. AI can highlight risk; it cannot own the risk. AI can recommend an action; it cannot be accountable for the outcome. AI can summarize what is happening; it cannot decide what should matter in the broader business context.</p>
+      
+      <p>Operational intelligence reduces reporting friction. It does not remove leadership. In fact, it makes human roles more valuable. When systems handle data capture and interpretation, people can focus on what they were always meant to do:</p>
+      <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <li>Ask better questions</li>
+        <li>Resolve ambiguity</li>
+        <li>Balance trade-offs</li>
+        <li>Set policy and guardrails</li>
+        <li>Take ownership for outcomes</li>
+      </ul>
+      
+      <p>In this model, humans are elevated from status reporters to decision-makers.</p>
+      
+      <h4>How to Start Small and Scale Intelligently</h4>
+      <p>Operational intelligence is mostly a design choice, not a tooling choice. Start small:</p>
+      <ol style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
+        <li>Pick one workflow that matters.</li>
+        <li>Define work units, stages, gates, exceptions, and owners.</li>
+        <li>Instrument just enough signals (stage transitions + gate outcomes + time-in-stage).</li>
+        <li>Build a point-in-time view that leadership can trust.</li>
+        <li>Add AI to reduce noise and speed clarity, always tied to evidence.</li>
+      </ol>
+      
+      <p>One simple test: <strong>Can leadership know the current state in 30 seconds without a meeting?</strong></p>
+      
+      <h4>Closing Thought</h4>
+      <p>MIS was built to inform management. Operational intelligence is built to run the business. If your organization needs daily standups and frequent status meetings just to understand what’s going on, it’s not a people problem. It’s a visibility problem.</p>
+      <p>Meetings should be for decisions. Status should be available at any time from the system. And when we design that system well, AI becomes a real advantage: <strong>less reporting, faster clarity, better decisions &mdash; in any domain.</strong></p>
+    `,
+    date: "Mar 1, 2026",
+    readTime: "5 min read",
+    tags: ["Operating Models", "Enterprise AI", "Operational Intelligence"],
+    featured: false
+  },
+  {
     id: "blog-task-shift",
     title: "The Great Task Shift: How AI Reshapes Product Companies, Service Firms, and In-House Teams",
     excerpt: "Understanding how Generative AI transitions organizational value from raw task execution to higher-level architectural oversight, product discipline, and governance control.",
@@ -120,7 +470,7 @@ const blogsData = [
     date: "Feb 14, 2026",
     readTime: "7 min read",
     tags: ["AI Systems", "Operating Models", "Enterprise Architecture"],
-    featured: true
+    featured: false
   },
   {
     id: "blog-org-design",
