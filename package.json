@@ -1,0 +1,19 @@
+{
+  "name": "haranadh-com",
+  "version": "1.0.0",
+  "description": "Personal Website for Haranadh G. - AI Systems Leader",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "personal-website",
+    "ai-systems",
+    "portfolio",
+    "nodejs"
+  ],
+  "author": "Haranadh G.",
+  "license": "ISC",
+  "dependencies": {}
+}
