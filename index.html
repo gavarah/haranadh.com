@@ -55,7 +55,7 @@
           <li><a href="#home" class="active"><i class="fas fa-terminal"></i> Home Console</a></li>
           <li><a href="#architecture"><i class="fas fa-network-wired"></i> Architectures</a></li>
           <li><a href="#publications"><i class="fas fa-file-alt"></i> Research</a></li>
-          <li><a href="#blog"><i class="fas fa-edit"></i> Essays Feed</a></li>
+          <li><a href="blogs.html"><i class="fas fa-edit"></i> Essays Feed</a></li>
           <li><a href="#about"><i class="fas fa-user-tie"></i> Biography</a></li>
           <li><a href="#contact"><i class="fas fa-envelope"></i> Connect</a></li>
         </ul>
@@ -89,7 +89,6 @@
       
       <div class="sidebar-social">
         <a href="https://www.linkedin.com/in/haranadhgavara/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/gavarah" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
       </div>
     </aside>
 
@@ -102,7 +101,7 @@
   <section id="home" class="hero">
     <div class="container">
       <div class="hero-content">
-        <span class="hero-tagline">VP / SVP / Acting CTO &amp; Enterprise Architect</span>
+        <span class="hero-tagline">Enterprise Architect &amp; Ex-VP/SVP/Acting CTO</span>
         <h1>Scale-Focused <span>AI Systems Leader</span> &amp; Technology Executive.</h1>
         <p class="hero-subtitle">
           Proven executive track record directing high-compliance engineering squads, payment platforms, and machine learning data products. Fusing architectural rigor with venture-scale execution to deploy governed LLM planes and retrieval systems.
@@ -142,7 +141,7 @@
           <a href="#publications" class="btn btn-primary" id="hero-cta-research">
             <i class="fas fa-file-alt"></i> View Research
           </a>
-          <a href="#blog" class="btn btn-secondary" id="hero-cta-blog">
+          <a href="blogs.html" class="btn btn-secondary" id="hero-cta-blog">
             <i class="fas fa-edit"></i> Read AI Blog
           </a>
         </div>
@@ -255,9 +254,6 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       AI Systems Blog Section
-       ========================================================================== -->
   <section id="blog" class="section-padding">
     <div class="container">
       <div class="section-header text-center">
@@ -268,15 +264,16 @@
         </p>
       </div>
 
-      <!-- Search Bar -->
-      <div class="blog-search-bar">
-        <i class="fas fa-search"></i>
-        <input type="text" id="blog-search" placeholder="Search essays by tag, title, or keyword...">
+      <!-- Dynamic Blogs Grid (Homepage preview limited to 5 articles) -->
+      <div class="blogs-grid" id="blogs-grid" data-limit="5">
+        <!-- Rendered dynamically by app.js -->
       </div>
 
-      <!-- Dynamic Blogs Grid -->
-      <div class="blogs-grid" id="blogs-grid">
-        <!-- Rendered dynamically by app.js -->
+      <!-- View All Essays Navigation -->
+      <div style="text-align: center; margin-top: 56px;">
+        <a href="blogs.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+          <i class="fas fa-book-open"></i> View All Essays <i class="fas fa-arrow-right" style="font-size: 0.8rem;"></i>
+        </a>
       </div>
     </div>
   </section>
@@ -360,7 +357,6 @@
               <div>
                 <h4 style="font-size: 1.02rem; margin-bottom: 4px; font-weight: 600;">AWS Certified Solutions Architect – Professional</h4>
                 <p style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 500;">Amazon Web Services (AWS)</p>
-                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Issued May 2025 · Expires May 2028</p>
               </div>
             </div>
 
@@ -372,7 +368,7 @@
               <div>
                 <h4 style="font-size: 1.02rem; margin-bottom: 4px; font-weight: 600;">TOGAF® 9 Certified</h4>
                 <p style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 500;">The Open Group</p>
-                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Issued May 2021 · Credential ID: 153182</p>
+                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Credential ID: 153182</p>
               </div>
             </div>
 
@@ -384,7 +380,6 @@
               <div>
                 <h4 style="font-size: 1.02rem; margin-bottom: 4px; font-weight: 600;">Project Management Professional (PMP)®</h4>
                 <p style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 500;">Project Management Institute</p>
-                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Issued Jan 2021 · Expires Jan 2027</p>
               </div>
             </div>
 
@@ -396,7 +391,7 @@
               <div>
                 <h4 style="font-size: 1.02rem; margin-bottom: 4px; font-weight: 600;">Google Cloud Certified Professional Data Engineer</h4>
                 <p style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 500;">Google</p>
-                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Issued Nov 2020 · Expires Nov 2022 · Credential ID: LPbGSC</p>
+                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Credential ID: LPbGSC</p>
               </div>
             </div>
           </div>
@@ -409,7 +404,7 @@
           <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
             I write the newsletter <strong>AI Systems & Outcomes</strong>, sharing operational perspectives on AI systems, data products, governance-led operating models, enterprise architecture, and the concrete business outcomes they enable.
           </p>
-          <a href="https://www.linkedin.com/in/haranadhgavara/" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="width: 100%; justify-content: center;">
+          <a href="https://www.linkedin.com/newsletters/ai-systems-outcomes-7433247856720875522/" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="width: 100%; justify-content: center;">
             <i class="fab fa-linkedin"></i> Subscribe to Newsletter
           </a>
         </div>
@@ -487,7 +482,7 @@
           <div class="timeline-badge"></div>
           <span class="timeline-date">Jun 2018 - Oct 2019 (1 yr 5 mos)</span>
           <div class="timeline-content">
-            <h3>SVP Engineering & Data Science <span class="executive-badge"><i class="fas fa-shield-alt"></i> SVP Role</span></h3>
+            <h3>SVP Engineering, Data Science &amp; Acting CTO <span class="executive-badge"><i class="fas fa-shield-alt"></i> SVP / Acting CTO</span></h3>
             <h4>UangTeman.com • Full-time</h4>
             <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;"><i class="fas fa-map-marker-alt"></i> Singapore</p>
             <p>Managed engineering, DevOps, and ML/AI teams. Architected robust and compliant credit risk modeling engines, credit scorecard frameworks, fraud analytics platforms, and automated credit assessment pipelines.</p>
@@ -547,7 +542,7 @@
           <div class="timeline-badge"></div>
           <span class="timeline-date">Sep 2010 - May 2011 (9 mos)</span>
           <div class="timeline-content">
-            <h3>MTS 2 (Member of Technical Staff 2)</h3>
+            <h3>MTS 2</h3>
             <h4>NetApp</h4>
             <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;"><i class="fas fa-map-marker-alt"></i> Bengaluru, India</p>
             <p>Conducted advanced research and application of machine learning, cloud storage virtualization, and semantic indexing in the Advanced Technology Group.</p>
@@ -578,12 +573,12 @@
           </div>
         </div>
 
-        <!-- 14. IITM (DRDO Sponsored Contract) -->
+        <!-- 14. IITM (DRDO Sponsored) -->
         <div class="timeline-item">
           <div class="timeline-badge"></div>
           <span class="timeline-date">Jan 2006 - Dec 2007 (2 yrs)</span>
           <div class="timeline-content">
-            <h3>Research Project Associate (Contract)</h3>
+            <h3>Research Project Associate</h3>
             <h4>IITM (ICSR)</h4>
             <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;"><i class="fas fa-map-marker-alt"></i> Chennai, India</p>
             <p>Worked on soft computing methodologies and parallel neural network structures for advanced cryptanalysis on a project sponsored by DRDO SAG Labs.</p>
@@ -610,9 +605,6 @@
           <a href="https://www.linkedin.com/in/haranadhgavara/" target="_blank" rel="noopener noreferrer" class="btn-contact" id="link-linkedin">
             <i class="fab fa-linkedin"></i> LinkedIn
           </a>
-          <a href="https://github.com/gavarah" target="_blank" rel="noopener noreferrer" class="btn-contact" id="link-github">
-            <i class="fab fa-github"></i> GitHub
-          </a>
         </div>
       </div>
     </div>
@@ -625,7 +617,6 @@
     <div class="container">
       <div class="social-icons">
         <a href="https://www.linkedin.com/in/haranadhgavara/" target="_blank" rel="noopener noreferrer" id="footer-linkedin"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/gavarah" target="_blank" rel="noopener noreferrer" id="footer-github"><i class="fab fa-github"></i></a>
       </div>
       <p>&copy; 2026 Haranadh G. All rights reserved. Built with pure HTML5, CSS Variables, and Vanilla JS.</p>
     </div>

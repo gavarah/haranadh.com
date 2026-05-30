@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Email copying
   const emailBtn = document.getElementById("email-btn");
-  const emailAddress = "haranadh.gavara@gmail.com"; // Placed here, can be updated by user
+  const emailAddress = "harrygavara@gmail.com"; // Placed here, can be updated by user
 
   // 3. Navigation Intersection Observer (Active highlighting)
   const observerOptions = {
@@ -147,7 +147,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    filtered.forEach((blog, index) => {
+    // Check for limit attribute
+    const limitAttr = blogsContainer.getAttribute("data-limit");
+    const limit = limitAttr ? parseInt(limitAttr, 10) : null;
+    const displayBlogs = limit ? filtered.slice(0, limit) : filtered;
+
+    displayBlogs.forEach((blog, index) => {
       const card = document.createElement("div");
       card.className = `blog-card glass-card ${blog.featured ? 'featured' : ''}`;
       card.style.animationDelay = `${index * 80}ms`;
