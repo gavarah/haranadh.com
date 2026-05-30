@@ -4,32 +4,6 @@
  */
 const publicationsData = [
   {
-    id: "pub-bounded-agentic",
-    title: "Bounded Agentic AI: An Enterprise Architecture Framework for Controlled Autonomy in Human-AI Work Systems",
-    authors: "Haranadh Gavara",
-    venue: "Forty-Seventh International Conference on Information Systems (ICIS 2026), Lisbon",
-    year: 2026,
-    category: "publication",
-    tags: ["Bounded Agentic AI", "Controlled Autonomy", "Enterprise Architecture", "Agency Boundary Deviation Index (ABDI)", "ICIS 2026"],
-    abstract: "This research paper introduces the Bounded Agentic AI framework, conceptualizing bounded agency as an Enterprise Architecture construct for controlled autonomy. It defines eight core boundaries (Purpose, Domain, Data, Decision, Action, Learning, Escalation, and Accountability) to constrain agent behavior. The paper also formulates the Agency Boundary Deviation Index (ABDI), a deviation-based measurement model treating autonomy, escalation, boundary events, and outcome variance as observable indicators of architectural maturity.",
-    links: {
-      pdf: "#"
-    }
-  },
-  {
-    id: "pub-ai-ea",
-    title: "AI-Enabled Enterprise Architecture: A Systems Framework for Coherence, Observability, and Measurable Alignment",
-    authors: "Haranadh Gavara",
-    venue: "Forty-Seventh International Conference on Information Systems (ICIS 2026), Lisbon",
-    year: 2026,
-    category: "publication",
-    tags: ["Enterprise Architecture", "AI Integration", "Observability", "Systems Coherence", "ICIS 2026"],
-    abstract: "This paper introduces a systems framework for integrating artificial intelligence into enterprise architecture. It establishes blueprints for managing structural coherence, real-time observability, and measurable business alignment, ensuring that model capabilities translate into robust, compliant, and governed enterprise outcomes.",
-    links: {
-      pdf: "#"
-    }
-  },
-  {
     id: "pub-maxent-flow",
     title: "Large-Scale Evaluation of MaxEntRAG-Flow: Incremental Evidence Structures for Real-Time Context Compression and Joint Probabilistic Graph Retrieval in Long-Context LLMs",
     authors: "Haranadh G.",
