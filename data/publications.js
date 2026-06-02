@@ -4,6 +4,19 @@
  */
 const publicationsData = [
   {
+    id: "pub-respolygp",
+    title: "ResPolyGP: Evidence-Gated Low-Rank Gaussian Processes",
+    authors: "Haranadh G.",
+    venue: "Zenodo [Preprint]",
+    year: 2026,
+    category: "preprint",
+    tags: ["ResPolyGP", "Gaussian Process", "Low-Rank GP", "Woodbury Formula", "Time-Series Extrapolation"],
+    abstract: "Gaussian Process regression provides flexible uncertainty-aware modelling, but exact GP training is often limited by dense covariance operations and unstable hyperparameter search, especially for non-stationary trajectories with trend, curvature, and residual periodic structure. This technical report introduces ResPolyGP, an evidence-gated finite-rank Gaussian Process construction for modelling non-stationary trajectory trends.\n\nResPolyGP maps time to a bounded Legendre coordinate system, sequentially fits orthogonal polynomial components to the residual, and retains only basis functions supported by residual variance evidence. The resulting polynomial trend covariance has the form (K=\\Phi A\\Phi^\\top+\\sigma_n^2I), allowing standard Woodbury and matrix determinant identities to evaluate the GP trend component in (O(ND^2+D^3)) time and (O(ND+D^2)) memory, where (D) is the selected active basis size.\n\nThe report evaluates ResPolyGP on 13 authentic real-world time-series datasets and separates three effects: the modelling value of adaptive Legendre residualization, the computational value of Woodbury-backed inference, and the combined performance of ResPolyGP with the Woodbury solver. Ablation studies compare ResPolyGP against fixed Legendre bases, raw monomial bases, and random Fourier features using the same low-rank solver. The results show that the solver alone is not sufficient; the evidence-gated Legendre representation is necessary for stable extrapolation on non-stationary trajectories.",
+    links: {
+      pdf: "https://zenodo.org/records/20500047"
+    }
+  },
+  {
     id: "pub-maxent-flow",
     title: "Large-Scale Evaluation of MaxEntRAG-Flow: Incremental Evidence Structures for Real-Time Context Compression and Joint Probabilistic Graph Retrieval in Long-Context LLMs",
     authors: "Haranadh G.",

@@ -100,6 +100,7 @@
         <ul class="nav-links">
           <li><a href="#home" class="active"><i class="fas fa-terminal"></i> Home Console</a></li>
           <li><a href="#architecture"><i class="fas fa-network-wired"></i> Architectures</a></li>
+          <li><a href="#products"><i class="fas fa-cubes"></i> Products</a></li>
           <li><a href="#publications"><i class="fas fa-file-alt"></i> Research</a></li>
           <li><a href="blogs.html"><i class="fas fa-edit"></i> Blog</a></li>
           <li><a href="#about"><i class="fas fa-user-tie"></i> Biography</a></li>
@@ -274,9 +275,111 @@
   </section>
 
   <!-- ==========================================================================
+       Products Section
+       ========================================================================== -->
+  <section id="products" class="section-padding" style="background-color: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header left-aligned">
+        <span class="section-label">Engineering Portfolio</span>
+        <h2 class="section-title">Core Products</h2>
+        <p class="section-subtitle" style="margin-left:0;">
+          Scalable platforms and open-source runtimes built to align complex AI execution with enterprise security and predictability.
+        </p>
+      </div>
+
+      <!-- Product 1: SolidState -->
+      <div class="product-item" style="margin-bottom: 24px;">
+        <!-- Product Header -->
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 28px;">
+          <img src="assets/solidstate_logo.png" alt="SolidState Logo" style="width: 48px; height: 48px; flex-shrink: 0; object-fit: contain;">
+          <div>
+            <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin: 0;">SolidState</h3>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); margin: 4px 0 0 0;">An open-source, state-oriented execution engine for predictable and bounded AI agent teams.</p>
+          </div>
+        </div>
+
+        <!-- SolidState Sub-sections Grid -->
+        <div class="systems-grid" style="align-items: stretch;">
+          
+          <!-- Column 1: Blog/Overview -->
+          <div class="glass-card" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-primary);">
+            <div>
+              <div style="font-size: 1rem; font-weight: 700; color: var(--accent-indigo); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-book-open"></i> 1. Product Blog Series
+              </div>
+              
+              <!-- Post 1 link -->
+              <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(20, 28, 26, 0.05); padding-bottom: 16px;">
+                <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Post 1 • May 20, 2026</span>
+                <h4 style="font-size: 1.05rem; margin-bottom: 8px; font-weight: 700; line-height: 1.3;"><a href="solidstate-blog.html#post-1" style="color: var(--text-primary); text-decoration: none; transition: var(--transition-smooth);" onmouseover="this.style.color='var(--accent-indigo)'" onmouseout="this.style.color='var(--text-primary)'">Building a Minimal Agent Runtime</a></h4>
+                <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                  A non-blocking ReAct loop, lightweight state graph orchestration, and symbolic pipeline chaining.
+                </p>
+              </div>
+
+              <!-- Post 2 link -->
+              <div style="margin-bottom: 8px;">
+                <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Post 2 • May 30, 2026</span>
+                <h4 style="font-size: 1.05rem; margin-bottom: 8px; font-weight: 700; line-height: 1.3;"><a href="solidstate-blog.html#post-2" style="color: var(--text-primary); text-decoration: none; transition: var(--transition-smooth);" onmouseover="this.style.color='var(--accent-indigo)'" onmouseout="this.style.color='var(--text-primary)'">The Command Center: Tool Registries</a></h4>
+                <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                  Zero-boilerplate schema synthesis using reflection and metaprogramming, and type-safe command execution.
+                </p>
+              </div>
+            </div>
+            <a href="solidstate-blog.html" class="btn btn-secondary" style="font-size: 0.8rem; padding: 10px 16px; align-self: flex-start; margin-top: 24px;">
+              View Series Hub <i class="fas fa-arrow-right" style="font-size: 0.7rem; margin-left: 4px;"></i>
+            </a>
+          </div>
+
+          <!-- Column 2: Documentation -->
+          <div class="glass-card" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between; border: 1px dashed var(--accent-indigo); background: var(--bg-primary);">
+            <div>
+              <div style="font-size: 1rem; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-file-code"></i> 2. Documentation
+              </div>
+              <h4 style="font-size: 1.15rem; margin-bottom: 12px; font-weight: 700; color: var(--text-secondary);">Architecture &amp; Core Pillars</h4>
+              <div style="background: rgba(13, 122, 95, 0.05); padding: 16px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); text-align: center; margin: 16px 0;">
+                <span style="font-size: 1rem; font-weight: 700; color: var(--accent-indigo); display: block; margin-bottom: 4px;">COMING SOON</span>
+                <span style="font-size: 0.8rem; color: var(--text-secondary);">Releasing with open-source launch</span>
+              </div>
+              <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 16px;">
+                The technical documentation will include declarative YAML schema specifications, state machine validation workflows, tool sandbox API definitions, and KYC onboarding tutorials.
+              </p>
+            </div>
+            <button class="btn btn-secondary" disabled style="opacity: 0.5; cursor: not-allowed; font-size: 0.8rem; padding: 10px 16px; align-self: flex-start; margin-top: 16px;">
+              Documentation Offline
+            </button>
+          </div>
+
+          <!-- Column 3: Repository -->
+          <div class="glass-card" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between; border: 1px dashed var(--accent-indigo); background: var(--bg-primary);">
+            <div>
+              <div style="font-size: 1rem; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <i class="fab fa-github"></i> 3. Repository
+              </div>
+              <h4 style="font-size: 1.15rem; margin-bottom: 12px; font-weight: 700; color: var(--text-secondary);">Source &amp; Releases</h4>
+              <div style="background: rgba(13, 122, 95, 0.05); padding: 16px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); text-align: center; margin: 16px 0;">
+                <span style="font-size: 1rem; font-weight: 700; color: var(--accent-indigo); display: block; margin-bottom: 4px;">COMING SOON</span>
+                <span style="font-size: 0.8rem; color: var(--text-secondary);">Releasing on GitHub in 2-3 weeks</span>
+              </div>
+              <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text-muted);">
+                The SolidState engine will be published under an open-source license. The repository will contain the Python core runtime, CLI tools, and pre-built reference templates for KYC validation.
+              </p>
+            </div>
+            <button class="btn btn-secondary" disabled style="opacity: 0.5; cursor: not-allowed; font-size: 0.8rem; padding: 10px 16px; align-self: flex-start; margin-top: 16px;">
+              <i class="fab fa-github"></i> Repository Offline
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
        Publications & Research Section
        ========================================================================== -->
-  <section id="publications" class="section-padding" style="background-color: var(--bg-secondary);">
+  <section id="publications" class="section-padding">
     <div class="container">
       <div class="section-header text-center">
         <span class="section-label">Selected Works</span>
@@ -301,7 +404,7 @@
     </div>
   </section>
 
-  <section id="blog" class="section-padding">
+  <section id="blog" class="section-padding" style="background-color: var(--bg-secondary);">
     <div class="container">
       <div class="section-header text-center">
         <span class="section-label">Technical Blog</span>
@@ -328,7 +431,7 @@
   <!-- ==========================================================================
        Background & Biography Section
        ========================================================================== -->
-  <section id="about" class="section-padding" style="background-color: var(--bg-secondary);">
+  <section id="about" class="section-padding">
     <div class="container">
       <div class="section-header text-center">
         <span class="section-label">Executive Biography</span>
