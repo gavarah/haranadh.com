@@ -2,12 +2,24 @@ import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3000;
 const DIST_DIR = path.join(__dirname, 'dist');
+
+// Ensure dist directory exists and is populated; compile it dynamically if missing
+if (!fs.existsSync(DIST_DIR) || fs.readdirSync(DIST_DIR).length === 0) {
+  console.log('Dist directory not found or empty. Compiling Astro build dynamically...');
+  try {
+    execSync('npm run build', { stdio: 'inherit' });
+  } catch (error) {
+    console.error('Dynamic compilation failed:', error);
+  }
+}
+
 
 const MIME_TYPES = {
   '.html': 'text/html',
