@@ -5,8 +5,7 @@
   "description": "Personal Website for Haranadh G. - AI Systems Leader",
   "scripts": {
     "dev": "astro dev",
-    "prestart": "astro build",
-    "start": "node server.js",
+    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
   },
