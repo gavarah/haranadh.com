@@ -3,4 +3,5 @@ User-agent: *
 Allow: /
 
 # Direct link to the XML Sitemap
-Sitemap: https://haranadh.com/sitemap.xml
+Sitemap: https://haranadh.com/sitemap-index.xml
+
