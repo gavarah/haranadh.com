@@ -60,8 +60,11 @@ const personSchema = {
   "description": description
 };
 
-// Standardized canonical URL (prevents duplicate warnings in Search Console)
-const canonicalURL = new URL(Astro.url.pathname, 'https://haranadh.com').href.replace(/\/index\.html$/, '/');
+// Standardized canonical URL — strips .html extension to match sitemap clean URLs
+// This prevents "Duplicate without user-selected canonical" warnings in Search Console
+const canonicalURL = new URL(Astro.url.pathname, 'https://haranadh.com').href
+  .replace(/\/index\.html$/, '/')
+  .replace(/\.html$/, '');
 ---
 
 <!DOCTYPE html>
