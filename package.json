@@ -1,11 +1,13 @@
 {
   "name": "haranadh-com",
+  "type": "module",
   "version": "1.0.0",
   "description": "Personal Website for Haranadh G. - AI Systems Leader",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "keywords": [
     "personal-website",
@@ -15,5 +17,7 @@
   ],
   "author": "Haranadh G.",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "astro": "^4.16.14"
+  }
 }

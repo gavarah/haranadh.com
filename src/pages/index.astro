@@ -1,148 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Primary SEO Meta Tags -->
-  <title>Haranadh Gavara | AI Systems, RAG &amp; Enterprise Architecture Leader</title>
-  <meta name="title" content="Haranadh Gavara | AI Systems, RAG &amp; Enterprise Architecture Leader">
-  <meta name="description" content="Official website of Haranadh Gavara, an AI Systems Leader &amp; Enterprise Architect specializing in RAG, Entropy RAG (MaxEntRAG), Knowledge Graphs, Gaussian Processes, and Governed Enterprise AI Platforms.">
-  <meta name="author" content="Haranadh Gavara">
-  <meta name="robots" content="index, follow">
-  
-  <!-- Open Graph / Facebook / LinkedIn -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://haranadh.com/">
-  <meta property="og:title" content="Haranadh Gavara | AI Systems, RAG &amp; Enterprise Architecture Leader">
-  <meta property="og:description" content="Official website of Haranadh Gavara, an AI Systems Leader &amp; Enterprise Architect specializing in RAG, Entropy RAG (MaxEntRAG), Knowledge Graphs, Gaussian Processes, and Governed Enterprise AI Platforms.">
-  <meta property="og:image" content="assets/og-preview.png">
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { publicationsData } from '../data/publications';
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://haranadh.com/">
-  <meta property="twitter:title" content="Haranadh Gavara | AI Systems, RAG &amp; Enterprise Architecture Leader">
-  <meta property="twitter:description" content="Official website of Haranadh Gavara, an AI Systems Leader &amp; Enterprise Architect specializing in RAG, Entropy RAG (MaxEntRAG), Knowledge Graphs, Gaussian Processes, and Governed Enterprise AI Platforms.">
+// Query and sort general blogs for the client-side search/modal
+const rawBlogs = await getCollection('blogs');
+const blogsData = rawBlogs.map(blog => ({
+  id: blog.slug,
+  title: blog.data.title,
+  excerpt: blog.data.excerpt,
+  date: blog.data.date,
+  readTime: blog.data.readTime,
+  tags: blog.data.tags,
+  featured: blog.data.featured,
+  content: blog.body
+})).sort((a, b) => {
+  if (a.featured && !b.featured) return -1;
+  if (!a.featured && b.featured) return 1;
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
+});
 
-  <!-- Google-Recommended JSON-LD Structured Data Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Haranadh Gavara",
-    "url": "https://haranadh.com",
-    "sameAs": [
-      "https://www.linkedin.com/in/haranadhgavara/"
-    ],
-    "jobTitle": "Enterprise Architect & AI Systems Leader",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Datavid"
-    },
-    "knowsAbout": [
-      "Retrieval-Augmented Generation (RAG)",
-      "Entropy RAG",
-      "MaxEntRAG",
-      "Knowledge Graphs",
-      "GraphRAG",
-      "Gaussian Processes",
-      "Gaussian Process Regression",
-      "Enterprise AI",
-      "Enterprise Architecture",
-      "AI Systems",
-      "Data Products",
-      "AI Governance"
-    ],
-    "alumniOf": [
-      {
-        "@type": "EducationalOrganization",
-        "name": "Indian Institute of Technology, Madras"
-      },
-      {
-        "@type": "EducationalOrganization",
-        "name": "Indian Institute of Management, Tiruchirappalli"
-      }
-    ],
-    "description": "Haranadh Gavara is an AI Systems Leader & Enterprise Architect specializing in RAG, Entropy RAG, Knowledge Graphs, Gaussian Processes, and Governed Enterprise AI Platforms."
-  }
-  </script>
+// Query SolidState blog posts for the homepage dynamic section
+const solidstatePosts = await getCollection('solidstate');
+const sortedSolidState = solidstatePosts.sort((a, b) => a.data.postNumber - b.data.postNumber);
+---
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230D7A5F'/%3E%3Cstop offset='100%25' stop-color='%2325545E'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='30' fill='url(%23g)'/%3E%3Cpath d='M35 25 v50 M65 25 v50 M35 50 h30' stroke='%23FFFFFF' stroke-width='14' stroke-linecap='round'/%3E%3C/svg%3E">
-  
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/styles.css">
-  
-  <!-- Vector Icons (FontAwesome) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-  
-  <div class="dashboard-wrapper">
-    <!-- ==========================================================================
-         Console Sidebar (Dashboard Left Panel)
-         ========================================================================== -->
-    <aside class="console-sidebar">
-      <div class="sidebar-brand-wrapper">
-        <a href="#home" class="logo-lockup" id="nav-logo">
-          <div class="logo-icon">H</div>
-          <div class="logo-identity">
-            <span class="logo-name">Haranadh Gavara</span>
-            <span class="logo-subtitle">AI Systems Leader & EA</span>
-          </div>
-        </a>
-        <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-      
-      <nav class="console-nav">
-        <ul class="nav-links">
-          <li><a href="#home" class="active"><i class="fas fa-terminal"></i> Home Console</a></li>
-          <li><a href="#architecture"><i class="fas fa-network-wired"></i> Architectures</a></li>
-          <li><a href="#products"><i class="fas fa-cubes"></i> Products</a></li>
-          <li><a href="#publications"><i class="fas fa-file-alt"></i> Research</a></li>
-          <li><a href="blogs.html"><i class="fas fa-edit"></i> Blog</a></li>
-          <li><a href="#about"><i class="fas fa-user-tie"></i> Biography</a></li>
-          <li><a href="#contact"><i class="fas fa-envelope"></i> Connect</a></li>
-        </ul>
-      </nav>
-      
-      <!-- Console Telemetry Widget (Hidden)
-      <div class="telemetry-widget">
-        <div class="telemetry-header">
-          <span class="telemetry-dot"></span>
-          <span>CONSOLE TELEMETRY</span>
-        </div>
-        <div class="telemetry-grid">
-          <div class="telemetry-item">
-            <span class="tel-label">SYSTEM_ENV:</span>
-            <span class="tel-val">Node.js Native</span>
-          </div>
-          <div class="telemetry-item">
-            <span class="tel-label">LATENCY:</span>
-            <span class="tel-val">&lt;15ms</span>
-          </div>
-          <div class="telemetry-item">
-            <span class="tel-label">CORE_RAG:</span>
-            <span class="tel-val">MaxEntRAG</span>
-          </div>
-          <div class="telemetry-item">
-            <span class="tel-label">CONTROL_GATEWAY:</span>
-            <span class="tel-val">Governed</span>
-          </div>
-        </div>
-      </div>
-      -->
-      
-      <div class="sidebar-social">
-        <a href="https://www.linkedin.com/in/haranadhgavara/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-    </aside>
-
-    <!-- MAIN CONSOLE PANEL -->
-    <main class="console-main">
-
+<Layout title="Haranadh Gavara | AI Systems, RAG & Enterprise Architecture Leader" description="Official website of Haranadh Gavara, an AI Systems Leader & Enterprise Architect specializing in RAG, Entropy RAG (MaxEntRAG), Knowledge Graphs, Gaussian Processes, and Governed Enterprise AI Platforms.">
   <!-- ==========================================================================
        Hero Section
        ========================================================================== -->
@@ -185,12 +68,18 @@
           </div>
         </div>
 
-        <div class="hero-actions">
+        <div class="hero-actions" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
           <a href="#publications" class="btn btn-primary" id="hero-cta-research">
             <i class="fas fa-file-alt"></i> View Research
           </a>
           <a href="blogs.html" class="btn btn-secondary" id="hero-cta-blog">
-            <i class="fas fa-edit"></i> Read AI Blog
+            <i class="fas fa-terminal"></i> AI Blog
+          </a>
+          <a href="management.html" class="btn btn-secondary" id="hero-cta-management">
+            <i class="fas fa-briefcase"></i> Leadership Blog
+          </a>
+          <a href="solidstate-blog.html" class="btn btn-secondary" id="hero-cta-solidstate">
+            <i class="fas fa-cubes"></i> Product Blog
           </a>
         </div>
       </div>
@@ -352,32 +241,21 @@
                 <i class="fas fa-book-open"></i> 1. Product Blog Series
               </div>
               
-              <!-- Post 1 link -->
-              <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(20, 28, 26, 0.05); padding-bottom: 16px;">
-                <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Post 1 • May 20, 2026</span>
-                <h4 style="font-size: 1.05rem; margin-bottom: 8px; font-weight: 700; line-height: 1.3;"><a href="solidstate-blog.html#post-1" style="color: var(--text-primary); text-decoration: none; transition: var(--transition-smooth);" onmouseover="this.style.color='var(--accent-indigo)'" onmouseout="this.style.color='var(--text-primary)'">Building a Minimal Agent Runtime</a></h4>
-                <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
-                  A non-blocking ReAct loop, lightweight state graph orchestration, and symbolic pipeline chaining.
-                </p>
-              </div>
-
-              <!-- Post 2 link -->
-              <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(20, 28, 26, 0.05); padding-bottom: 16px;">
-                <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Post 2 • May 30, 2026</span>
-                <h4 style="font-size: 1.05rem; margin-bottom: 8px; font-weight: 700; line-height: 1.3;"><a href="solidstate-blog.html#post-2" style="color: var(--text-primary); text-decoration: none; transition: var(--transition-smooth);" onmouseover="this.style.color='var(--accent-indigo)'" onmouseout="this.style.color='var(--text-primary)'">The Command Center: Tool Registries</a></h4>
-                <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
-                  Zero-boilerplate schema synthesis using reflection and metaprogramming, and type-safe command execution.
-                </p>
-              </div>
-
-              <!-- Post 3 link -->
-              <div style="margin-bottom: 8px;">
-                <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Post 3 • June 5, 2026</span>
-                <h4 style="font-size: 1.05rem; margin-bottom: 8px; font-weight: 700; line-height: 1.3;"><a href="solidstate-blog.html#post-3" style="color: var(--text-primary); text-decoration: none; transition: var(--transition-smooth);" onmouseover="this.style.color='var(--accent-indigo)'" onmouseout="this.style.color='var(--text-primary)'">The Guardian at the Gate: Policy &amp; Intercepts</a></h4>
-                <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
-                  Enforcing boundaries with the Interceptor pattern, modular validation chains, and stateful interrupts.
-                </p>
-              </div>
+              {sortedSolidState.map((post) => (
+                <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(20, 28, 26, 0.05); padding-bottom: 16px;">
+                  <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">
+                    Post {post.data.postNumber} • {post.data.date}
+                  </span>
+                  <h4 style="font-size: 1.05rem; margin-bottom: 8px; font-weight: 700; line-height: 1.3;">
+                    <a href={`solidstate-blog.html#post-${post.data.postNumber}`} style="color: var(--text-primary); text-decoration: none; transition: var(--transition-smooth);" onmouseover="this.style.color='var(--accent-indigo)'" onmouseout="this.style.color='var(--text-primary)'">
+                      {post.data.title}
+                    </a>
+                  </h4>
+                  <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                    {post.body.replace(/<[^>]*>/g, '').split('\n').filter(line => line.trim().length > 0)[0]?.slice(0, 150) + '...'}
+                  </p>
+                </div>
+              ))}
             </div>
             <a href="solidstate-blog.html" class="btn btn-secondary" style="font-size: 0.8rem; padding: 10px 16px; align-self: flex-start; margin-top: 24px;">
               View Series Hub <i class="fas fa-arrow-right" style="font-size: 0.7rem; margin-left: 4px;"></i>
@@ -454,11 +332,64 @@
   <section id="blog" class="section-padding" style="background-color: var(--bg-secondary);">
     <div class="container">
       <div class="section-header text-center">
-        <span class="section-label">Technical Blog</span>
-        <h2 class="section-title">AI Systems Blog</h2>
+        <span class="section-label">Technical &amp; Leadership Writing</span>
+        <h2 class="section-title">Publications &amp; Blog Hubs</h2>
         <p class="section-subtitle">
-          Deep-dives into actual architectural challenges, production post-mortems, and scalable patterns for governing data products.
+          Perspectives on enterprise artificial intelligence, semantic data architectures, startup scaling, and high-performance product execution.
         </p>
+      </div>
+
+      <!-- Blogs Channel Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 64px;">
+        <!-- Card 1 -->
+        <a href="blogs.html" class="glass-card" style="padding: 28px; display: flex; flex-direction: column; justify-content: space-between; text-decoration: none; background: var(--bg-primary);">
+          <div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-indigo); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-terminal"></i> AI Systems Blog
+            </div>
+            <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+              Technical deep-dives on RAG, context compression, knowledge graphs, and governing enterprise AI gateways.
+            </p>
+          </div>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-indigo); margin-top: 20px; display: inline-flex; align-items: center; gap: 4px;">
+            Explore AI Blog <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i>
+          </span>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="management.html" class="glass-card" style="padding: 28px; display: flex; flex-direction: column; justify-content: space-between; text-decoration: none; background: var(--bg-primary);">
+          <div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-indigo); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-briefcase"></i> Startups &amp; Leadership
+            </div>
+            <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+              Operational insights on scaling software engineering squads, managing technical debt, and startup product leadership.
+            </p>
+          </div>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-indigo); margin-top: 20px; display: inline-flex; align-items: center; gap: 4px;">
+            Explore Leadership Blog <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i>
+          </span>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="solidstate-blog.html" class="glass-card" style="padding: 28px; display: flex; flex-direction: column; justify-content: space-between; text-decoration: none; background: var(--bg-primary);">
+          <div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-indigo); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-cubes"></i> Product Blog
+            </div>
+            <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+              A build-in-public series explaining the architectural decisions behind a state-oriented agent runtime framework.
+            </p>
+          </div>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-indigo); margin-top: 20px; display: inline-flex; align-items: center; gap: 4px;">
+            Explore Product Blog <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i>
+          </span>
+        </a>
+      </div>
+
+      <div class="section-header left-aligned" style="margin-bottom: 40px; border-top: 1px solid var(--border-color); padding-top: 48px;">
+        <span class="section-label">Recent Essays</span>
+        <h3 style="font-size: 1.5rem; font-weight: 700;">Latest in AI Systems</h3>
       </div>
 
       <!-- Dynamic Blogs Grid (Homepage preview limited to 5 articles) -->
@@ -469,7 +400,7 @@
       <!-- View All Essays Navigation -->
       <div style="text-align: center; margin-top: 56px;">
         <a href="blogs.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
-          <i class="fas fa-book-open"></i> View All Posts <i class="fas fa-arrow-right" style="font-size: 0.8rem;"></i>
+          <i class="fas fa-book-open"></i> View All AI Posts <i class="fas fa-arrow-right" style="font-size: 0.8rem;"></i>
         </a>
       </div>
     </div>
@@ -601,7 +532,7 @@
           <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
             I write the newsletter <strong>AI Systems & Outcomes</strong>, sharing operational perspectives on AI systems, data products, governance-led operating models, enterprise architecture, and the concrete business outcomes they enable.
           </p>
-          <a href="https://www.linkedin.com/newsletters/ai-systems-outcomes-7433247856720875522/" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="width: 100%; justify-content: center;">
+          <a href="https://www.linkedin.com/newsletters/ai-systems-outcomes-7433247856720875522/" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="width: 100%; justify-content: center; text-decoration: none;">
             <i class="fab fa-linkedin"></i> Subscribe to Newsletter
           </a>
         </div>
@@ -638,7 +569,7 @@
           </div>
         </div>
 
-        <!-- 3. Indepay / Setara (Head of Product Setara) -->
+        <!-- 3. Indepay / Setara -->
         <div class="timeline-item executive">
           <div class="timeline-badge"></div>
           <span class="timeline-date">Mar 2021 - Oct 2021 (8 mos)</span>
@@ -799,7 +730,7 @@
           <button class="btn-contact" id="email-btn" title="Click to copy email address">
             <i class="fas fa-copy"></i> Copy Email Address
           </button>
-          <a href="https://www.linkedin.com/in/haranadhgavara/" target="_blank" rel="noopener noreferrer" class="btn-contact" id="link-linkedin">
+          <a href="https://www.linkedin.com/in/haranadhgavara/" target="_blank" rel="noopener noreferrer" class="btn-contact" id="link-linkedin" style="text-decoration: none;">
             <i class="fab fa-linkedin"></i> LinkedIn
           </a>
         </div>
@@ -815,12 +746,9 @@
       <div class="social-icons">
         <a href="https://www.linkedin.com/in/haranadhgavara/" target="_blank" rel="noopener noreferrer" id="footer-linkedin"><i class="fab fa-linkedin-in"></i></a>
       </div>
-      <p>&copy; 2026 Haranadh Gavara. All rights reserved. Built with pure HTML5, CSS Variables, and Vanilla JS.</p>
+      <p>&copy; 2026 Haranadh Gavara. All rights reserved. Built with Astro.</p>
     </div>
   </footer>
-
-  </main>
-  </div> <!-- Close dashboard-wrapper -->
 
   <!-- ==========================================================================
        High-Fidelity Essay Reading Modal
@@ -840,13 +768,9 @@
     </div>
   </div>
 
-  <!-- ==========================================================================
-       JavaScript Modules & Execution
-       ========================================================================== -->
-  <!-- Loaded in order: Data first, then interactive and animation scripts -->
-  <script src="data/publications.js"></script>
-  <script src="data/blogs.js"></script>
-  <script src="js/canvas.js"></script>
-  <script src="js/app.js"></script>
-</body>
-</html>
+  <!-- Inject the static datasets to satisfy the window object contracts in app.js -->
+  <script is:inline define:vars={{ publicationsData, blogsData }}>
+    window.publicationsData = publicationsData;
+    window.blogsData = blogsData;
+  </script>
+</Layout>
