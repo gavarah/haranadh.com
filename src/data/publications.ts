@@ -1,8 +1,20 @@
-/**
- * Publications Data
- * haranadh.com
- */
-const publicationsData = [
+export interface Publication {
+  id: string;
+  title: string;
+  authors: string;
+  venue: string;
+  year: number;
+  category: 'preprint' | 'publication' | 'patent';
+  tags: string[];
+  abstract: string;
+  links?: {
+    arxiv?: string;
+    pdf?: string;
+    github?: string;
+  };
+}
+
+export const publicationsData: Publication[] = [
   {
     id: "pub-respolygp",
     title: "ResPolyGP: Evidence-Gated Low-Rank Gaussian Processes",
@@ -95,5 +107,3 @@ const publicationsData = [
     }
   }
 ];
-// Bind to window to share across scripts
-window.publicationsData = publicationsData;
