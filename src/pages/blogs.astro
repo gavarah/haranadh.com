@@ -14,7 +14,11 @@ const blogsData = rawBlogs.map(blog => ({
   tags: blog.data.tags,
   featured: blog.data.featured,
   content: blog.body
-})).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+})).sort((a, b) => {
+  if (a.featured && !b.featured) return -1;
+  if (!a.featured && b.featured) return 1;
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
+});
 ---
 
 <Layout 
