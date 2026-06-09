@@ -282,11 +282,64 @@ const sortedSolidState = solidstatePosts.sort((a, b) => a.data.postNumber - b.da
   <section id="blog" class="section-padding" style="background-color: var(--bg-secondary);">
     <div class="container">
       <div class="section-header text-center">
-        <span class="section-label">Technical Blog</span>
-        <h2 class="section-title">AI Systems Blog</h2>
+        <span class="section-label">Technical &amp; Leadership Writing</span>
+        <h2 class="section-title">Publications &amp; Blog Hubs</h2>
         <p class="section-subtitle">
-          Deep-dives into actual architectural challenges, production post-mortems, and scalable patterns for governing data products.
+          Perspectives on enterprise artificial intelligence, semantic data architectures, startup scaling, and high-performance product execution.
         </p>
+      </div>
+
+      <!-- Blogs Channel Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 64px;">
+        <!-- Card 1 -->
+        <a href="blogs.html" class="glass-card" style="padding: 28px; display: flex; flex-direction: column; justify-content: space-between; text-decoration: none; background: var(--bg-primary);">
+          <div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-indigo); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-terminal"></i> AI Systems Blog
+            </div>
+            <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+              Technical deep-dives on RAG, context compression, knowledge graphs, and governing enterprise AI gateways.
+            </p>
+          </div>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-indigo); margin-top: 20px; display: inline-flex; align-items: center; gap: 4px;">
+            Explore AI Blog <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i>
+          </span>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="management.html" class="glass-card" style="padding: 28px; display: flex; flex-direction: column; justify-content: space-between; text-decoration: none; background: var(--bg-primary);">
+          <div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-indigo); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-briefcase"></i> Startups &amp; Leadership
+            </div>
+            <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+              Operational insights on scaling software engineering squads, managing technical debt, and startup product leadership.
+            </p>
+          </div>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-indigo); margin-top: 20px; display: inline-flex; align-items: center; gap: 4px;">
+            Explore Leadership Blog <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i>
+          </span>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="solidstate-blog.html" class="glass-card" style="padding: 28px; display: flex; flex-direction: column; justify-content: space-between; text-decoration: none; background: var(--bg-primary);">
+          <div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-indigo); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-cubes"></i> SolidState Product Series
+            </div>
+            <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+              A build-in-public series explaining the architectural decisions behind a state-oriented agent runtime framework.
+            </p>
+          </div>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-indigo); margin-top: 20px; display: inline-flex; align-items: center; gap: 4px;">
+            Explore SolidState Series <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i>
+          </span>
+        </a>
+      </div>
+
+      <div class="section-header left-aligned" style="margin-bottom: 40px; border-top: 1px solid var(--border-color); padding-top: 48px;">
+        <span class="section-label">Recent Essays</span>
+        <h3 style="font-size: 1.5rem; font-weight: 700;">Latest in AI Systems</h3>
       </div>
 
       <!-- Dynamic Blogs Grid (Homepage preview limited to 5 articles) -->
@@ -297,7 +350,7 @@ const sortedSolidState = solidstatePosts.sort((a, b) => a.data.postNumber - b.da
       <!-- View All Essays Navigation -->
       <div style="text-align: center; margin-top: 56px;">
         <a href="blogs.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
-          <i class="fas fa-book-open"></i> View All Posts <i class="fas fa-arrow-right" style="font-size: 0.8rem;"></i>
+          <i class="fas fa-book-open"></i> View All AI Posts <i class="fas fa-arrow-right" style="font-size: 0.8rem;"></i>
         </a>
       </div>
     </div>
