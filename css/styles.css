@@ -1880,3 +1880,188 @@ footer .social-icons a:hover {
   }
 }
 
+/* ==========================================================================
+   9. Interactive System Architecture Blueprints & Telemetry
+   ========================================================================== */
+.blueprint-container {
+  border-top: 1px dashed rgba(20, 28, 26, 0.08);
+  padding-top: 28px;
+  margin-top: 24px;
+}
+
+.blueprint-flow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32px 0;
+  position: relative;
+}
+
+.blueprint-node {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 14px 20px;
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-sm);
+  z-index: 2;
+  user-select: none;
+}
+
+.blueprint-node:hover,
+.blueprint-node.active {
+  background: var(--bg-secondary);
+  border-color: var(--accent-indigo);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.blueprint-node.active {
+  border-width: 2px;
+  padding: 13px 19px; /* Balance border weight */
+}
+
+.blueprint-arrow {
+  flex-grow: 1;
+  height: 2px;
+  border-top: 2px dashed var(--border-color);
+  margin: 0 12px;
+  position: relative;
+  min-width: 20px;
+}
+
+.blueprint-arrow::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-indigo);
+  border-radius: 50%;
+  animation: flowPulse 2.5s infinite linear;
+  box-shadow: 0 0 6px var(--accent-indigo);
+}
+
+.blueprint-console {
+  background: #141C1A; /* Dark code console terminal style */
+  padding: 20px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 24px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #d0d7d5;
+  box-shadow: var(--shadow-sm);
+}
+
+.blueprint-console-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: #8B9B97;
+  font-weight: 700;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.blueprint-console-body {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  min-height: 100px;
+  white-space: pre-wrap;
+}
+
+.console-green-text {
+  color: #10B981;
+}
+
+.console-amber-text {
+  color: #F59E0B;
+}
+
+.console-dim-text {
+  color: #6B7280;
+}
+
+/* Animations */
+@keyframes flowPulse {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes flowPulseVertical {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* Stagger animation delays for visual pipeline effect */
+.blueprint-arrow:nth-of-type(1)::after { animation-delay: 0s; }
+.blueprint-arrow:nth-of-type(2)::after { animation-delay: 0.6s; }
+.blueprint-arrow:nth-of-type(3)::after { animation-delay: 1.2s; }
+.blueprint-arrow:nth-of-type(4)::after { animation-delay: 1.8s; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .blueprint-flow {
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  
+  .blueprint-node {
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .blueprint-arrow {
+    width: 2px;
+    height: 24px;
+    border-left: 2px dashed var(--border-color);
+    border-top: none;
+    margin: 4px 0;
+    min-width: auto;
+  }
+  
+  .blueprint-arrow::after {
+    top: 0;
+    left: -4px;
+    animation: flowPulseVertical 2.5s infinite linear;
+  }
+}
+
+

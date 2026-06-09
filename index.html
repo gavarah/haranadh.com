@@ -229,12 +229,34 @@
           <div class="system-card-body">
             <div class="system-detailed-info collapsed" id="sys-detail-platform">
               <h4>Key Capabilities & Controls</h4>
-              <ul class="system-features">
+              <ul class="system-features" style="margin-bottom: 24px;">
                 <li><i class="fas fa-check-circle"></i> <strong>Semantic Caching:</strong> Pre-evaluates embeddings to serve repeat queries instantly (&lt;15ms latency).</li>
                 <li><i class="fas fa-check-circle"></i> <strong>PII & Sensitive Data Redaction:</strong> Prevents intellectual property leakage to external APIs.</li>
                 <li><i class="fas fa-check-circle"></i> <strong>Model Routing & Rate Limits:</strong> Automated fallback routing and precise cost attribution.</li>
                 <li><i class="fas fa-check-circle"></i> <strong>Alignment Auditing:</strong> Logs complete token histories and citation boundaries.</li>
               </ul>
+
+              <!-- Interactive Diagram & Telemetry -->
+              <div class="blueprint-container">
+                <h4>System Architecture Blueprint</h4>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 16px;">Click on nodes to inspect real-time execution flows and telemetry logs.</p>
+                <div class="blueprint-flow">
+                  <div class="blueprint-node active" data-node="pii-shield" data-system="platform">PII Shield</div>
+                  <div class="blueprint-arrow"></div>
+                  <div class="blueprint-node" data-node="cache" data-system="platform">Semantic Cache</div>
+                  <div class="blueprint-arrow"></div>
+                  <div class="blueprint-node" data-node="router" data-system="platform">Model Router</div>
+                  <div class="blueprint-arrow"></div>
+                  <div class="blueprint-node" data-node="auditor" data-system="platform">Audit Hub</div>
+                </div>
+                <div class="blueprint-console">
+                  <div class="blueprint-console-header">
+                    <span id="console-header-platform">Telemetry Console • PII Shield Active</span>
+                    <span class="telemetry-dot"></span>
+                  </div>
+                  <div class="blueprint-console-body" id="console-body-platform">Initializing telemetry...</div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="system-expand-bar">
@@ -257,12 +279,34 @@
           <div class="system-card-body">
             <div class="system-detailed-info collapsed" id="sys-detail-rag">
               <h4>Key Capabilities & Controls</h4>
-              <ul class="system-features">
+              <ul class="system-features" style="margin-bottom: 24px;">
                 <li><i class="fas fa-check-circle"></i> <strong>RBAC-Aware Retrieval:</strong> Filters unauthorized chunks *before* LLM insertion.</li>
                 <li><i class="fas fa-check-circle"></i> <strong>Reciprocal Rank Fusion (RRF):</strong> Blends deep vectors with keyword-exact queries.</li>
                 <li><i class="fas fa-check-circle"></i> <strong>Knowledge GraphRAG:</strong> Resolves complex, multi-document synthesis queries.</li>
                 <li><i class="fas fa-check-circle"></i> <strong>Hierarchical Context Parsing:</strong> Preserves document outline hierarchies.</li>
               </ul>
+
+              <!-- Interactive Diagram & Telemetry -->
+              <div class="blueprint-container">
+                <h4>System Architecture Blueprint</h4>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 16px;">Click on nodes to inspect real-time execution flows and telemetry logs.</p>
+                <div class="blueprint-flow">
+                  <div class="blueprint-node active" data-node="query" data-system="rag">Query Ingest</div>
+                  <div class="blueprint-arrow"></div>
+                  <div class="blueprint-node" data-node="hybrid" data-system="rag">Hybrid Search</div>
+                  <div class="blueprint-arrow"></div>
+                  <div class="blueprint-node" data-node="knowledge" data-system="rag">Graph Resolver</div>
+                  <div class="blueprint-arrow"></div>
+                  <div class="blueprint-node" data-node="rbac" data-system="rag">Security Gate</div>
+                </div>
+                <div class="blueprint-console">
+                  <div class="blueprint-console-header">
+                    <span id="console-header-rag">Telemetry Console • Query Ingest Active</span>
+                    <span class="telemetry-dot"></span>
+                  </div>
+                  <div class="blueprint-console-body" id="console-body-rag">Initializing telemetry...</div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="system-expand-bar">

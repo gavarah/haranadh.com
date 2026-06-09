@@ -257,6 +257,125 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // 7.1 Interactive Blueprint Diagram and Telemetry Simulation
+  const telemetryData = {
+    platform: {
+      "pii-shield": {
+        header: "Telemetry Console • PII Shield Active",
+        body: `<span class="console-green-text">[PII_FILTER]</span> Scanning incoming request payload...
+<span class="console-green-text">[PII_FILTER]</span> Match found: "John Doe" (NAME) -> Redacted to "[REDACTED_NAME_1]"
+<span class="console-green-text">[PII_FILTER]</span> Match found: "4532-1200-8843-9021" (CREDIT_CARD) -> Redacted to "[REDACTED_CC_1]"
+<span class="console-dim-text">[STATUS]</span> Input payload sanitized. Compliance validation passed. Ready for cache evaluation.`
+      },
+      "cache": {
+        header: "Telemetry Console • Semantic Cache Check",
+        body: `<span class="console-green-text">[CACHE]</span> Query embedding generated (dim: 1536)
+<span class="console-green-text">[CACHE]</span> Performing vector similarity search in Redis index...
+<span class="console-green-text">[CACHE]</span> Top match cosine similarity: 0.962 (Confidence threshold: 0.92)
+<span class="console-green-text">[CACHE_HIT]</span> Similar query found. Serving cached response.
+<span class="console-amber-text">[METRIC]</span> Execution Latency: <span class="console-green-text">12ms</span> | Token Savings: 342 tokens.`
+      },
+      "router": {
+        header: "Telemetry Console • Dynamic Model Routing",
+        body: `<span class="console-green-text">[ROUTER]</span> Selecting optimal model route...
+<span class="console-green-text">[ROUTER]</span> Task complexity: High (Structured JSON Entity Extraction)
+<span class="console-green-text">[ROUTER]</span> Routing request to Claude 3.5 Sonnet (Primary Route)
+<span class="console-dim-text">[LIMITS]</span> Current rate limit state: 14/100 RPM. Tokens remaining: 80,000/min.
+<span class="console-dim-text">[ROUTER]</span> Dispatching payload to model endpoint...`
+      },
+      "auditor": {
+        header: "Telemetry Console • Alignment Auditing",
+        body: `<span class="console-green-text">[AUDITOR]</span> Capturing trace events for context token logs...
+<span class="console-green-text">[AUDITOR]</span> Model response verified. Toxicity score: 0.01. Safety check passed.
+<span class="console-green-text">[AUDITOR]</span> Archiving execution trace (prompt tokens: 512, completion: 180).
+<span class="console-dim-text">[AUDITOR]</span> Writing encrypted audit packet to cold storage.
+<span class="console-dim-text">[AUDITOR]</span> Pipeline completion logged successfully.`
+      }
+    },
+    rag: {
+      "query": {
+        header: "Telemetry Console • Query Ingestion",
+        body: `<span class="console-green-text">[INGEST]</span> Received user query: "What is our policy on client credit limits?"
+<span class="console-green-text">[INGEST]</span> Tokenizing parameters and extracting entities...
+<span class="console-green-text">[INGEST]</span> Entity terms identified: ["client", "credit limits", "policy"]
+<span class="console-dim-text">[INGEST]</span> Initiating parallel dense, sparse, and graph retrieval tasks...`
+      },
+      "hybrid": {
+        header: "Telemetry Console • Hybrid RRF Search",
+        body: `<span class="console-green-text">[RETRIEVAL]</span> Querying Dense Vector Store (semantic match) -> 5 candidates
+<span class="console-green-text">[RETRIEVAL]</span> Querying Sparse Index (exact keyword BM25) -> 5 candidates
+<span class="console-green-text">[RRF]</span> Blending ranks using Reciprocal Rank Fusion (RRF)...
+<span class="console-green-text">[RRF]</span> Blended top candidate node ID: doc_7718_chunk_3 (score: 0.083)
+<span class="console-amber-text">[METRIC]</span> Hybrid search completed in <span class="console-green-text">32ms</span>.`
+      },
+      "knowledge": {
+        header: "Telemetry Console • Graph Resolver",
+        body: `<span class="console-green-text">[GRAPH]</span> Mapping query entities to Knowledge Graph vertices...
+<span class="console-green-text">[GRAPH]</span> Subgraph matched: (Client) -[has_limit]-> (CreditPolicy)
+<span class="console-green-text">[GRAPH]</span> Resolving adjacent attributes and links: ["CreditLimitUSD", "ApprovalWorkflow"]
+<span class="console-dim-text">[GRAPH]</span> Fusing entity facts with standard chunk context to form enriched prompt.`
+      },
+      "rbac": {
+        header: "Telemetry Console • Security Gate",
+        body: `<span class="console-green-text">[SECURITY]</span> Verifying document ACL tokens against user roles...
+<span class="console-green-text">[SECURITY]</span> User Role: "Customer_Representative" | Tenant ID: "US_EAST"
+<span class="console-green-text">[SECURITY]</span> Filter evaluation:
+  - doc_7718_chunk_3: <span class="console-green-text">ALLOWED</span> (Public policy documentation)
+  - doc_9021_chunk_12: <span class="console-amber-text">FILTERED</span> (Requires VP level credentials)
+<span class="console-dim-text">[SECURITY]</span> Document-level compliance check completed.`
+      }
+    }
+  };
+
+  const blueprintContainers = document.querySelectorAll(".blueprint-container");
+  blueprintContainers.forEach(container => {
+    container.addEventListener("click", (e) => {
+      e.stopPropagation(); // Stop parent system-card from collapsing when clicking diagrams
+    });
+
+    const nodes = container.querySelectorAll(".blueprint-node");
+    nodes.forEach(node => {
+      node.addEventListener("click", () => {
+        const system = node.getAttribute("data-system");
+        const nodeKey = node.getAttribute("data-node");
+        
+        // Update active class on nodes
+        nodes.forEach(n => n.classList.remove("active"));
+        node.classList.add("active");
+        
+        // Update console header and body
+        const headerEl = document.getElementById(`console-header-${system}`);
+        const bodyEl = document.getElementById(`console-body-${system}`);
+        
+        if (telemetryData[system] && telemetryData[system][nodeKey]) {
+          const data = telemetryData[system][nodeKey];
+          if (headerEl) headerEl.textContent = data.header;
+          if (bodyEl) bodyEl.innerHTML = data.body;
+        }
+      });
+    });
+  });
+
+  // Initialize Default Telemetry View on Load
+  function initTelemetry() {
+    const defaultNodes = [
+      { system: "platform", node: "pii-shield" },
+      { system: "rag", node: "query" }
+    ];
+    
+    defaultNodes.forEach(def => {
+      const headerEl = document.getElementById(`console-header-${def.system}`);
+      const bodyEl = document.getElementById(`console-body-${def.system}`);
+      if (telemetryData[def.system] && telemetryData[def.system][def.node]) {
+        const data = telemetryData[def.system][def.node];
+        if (headerEl) headerEl.textContent = data.header;
+        if (bodyEl) bodyEl.innerHTML = data.body;
+      }
+    });
+  }
+
+  initTelemetry();
+
   // 8. Contact Interaction (Email Copy)
   if (emailBtn) {
     emailBtn.addEventListener("click", (e) => {
