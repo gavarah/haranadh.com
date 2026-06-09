@@ -39,7 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const activeId = entry.target.getAttribute("id");
         navLinks.forEach(link => {
           link.classList.remove("active");
-          if (link.getAttribute("href") === `#${activeId}`) {
+          const href = link.getAttribute("href");
+          // Match both /#section (from homepage sidebar) and #section formats
+          if (href === `#${activeId}` || href === `/#${activeId}`) {
             link.classList.add("active");
           }
         });
