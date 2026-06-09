@@ -18,6 +18,6 @@
   "author": "Haranadh G.",
   "license": "ISC",
   "dependencies": {
-    "astro": "^4.16.14"
+    "astro": "6.4.4"
   }
 }

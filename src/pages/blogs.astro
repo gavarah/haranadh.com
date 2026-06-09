@@ -6,7 +6,7 @@ import { publicationsData } from '../data/publications';
 // Query and sort general blogs for the client-side search/modal
 const rawBlogs = await getCollection('blogs');
 const blogsData = rawBlogs.map(blog => ({
-  id: blog.slug,
+  id: blog.id,
   title: blog.data.title,
   excerpt: blog.data.excerpt,
   date: blog.data.date,
